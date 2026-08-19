@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" data-theme="dark" data-motion="full">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#04070d" />
+    <meta name="description" content="NutriFlow — personalized nutrition, fitness and wellness guidance designed around you." />
+    <title>NutriFlow — Your Health. Your Data. Your Journey.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // Apply persisted theme + motion before React mounts (prevents flash).
+      try {
+        var s = JSON.parse(localStorage.getItem('nutriflow:settings') || '{}');
+        var sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme = s.theme === 'system' ? (sysDark ? 'dark' : 'light') : s.theme || 'dark';
+        var sysReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var motion = s.motion === 'reduced' || sysReduced ? 'reduced' : 'full';
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.dataset.motion = motion;
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

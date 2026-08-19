@@ -1,0 +1,143 @@
+/* ---------------------------------------------------------------------------
+   NutriFlow design tokens
+   Palette: Abyss / Deep Tide (backgrounds), Emerald Pulse (primary),
+   Lagoon (secondary), Sky Current (data), Slate Mist (muted), Amber Spark.
+--------------------------------------------------------------------------- */
+
+:root {
+  /* Backgrounds */
+  --bg-0: #04070d;
+  --bg-1: #070d17;
+  --bg-2: #0b1424;
+
+  /* Surfaces (glass) */
+  --surface: rgba(255, 255, 255, 0.045);
+  --surface-2: rgba(255, 255, 255, 0.08);
+  --surface-3: rgba(255, 255, 255, 0.12);
+  --surface-solid: #0c1524;
+  --surface-raised: rgba(13, 22, 38, 0.82);
+
+  /* Lines */
+  --border: rgba(148, 163, 184, 0.14);
+  --border-strong: rgba(148, 163, 184, 0.28);
+
+  /* Text */
+  --text-1: #eef2f7;
+  --text-2: #9aa7bd;
+  --text-3: #67748c;
+  --text-invert: #04121a;
+
+  /* Brand */
+  --accent: #10b981;      /* Emerald Pulse */
+  --accent-2: #2dd4bf;    /* Lagoon */
+  --accent-3: #38bdf8;    /* Sky Current */
+  --accent-soft: rgba(16, 185, 129, 0.14);
+  --accent-border: rgba(45, 212, 191, 0.35);
+
+  /* Semantic */
+  --warn: #f5a524;
+  --danger: #f87171;
+  --danger-soft: rgba(248, 113, 113, 0.12);
+  --violet: #a78bfa;
+  --pink: #f472b6;
+  --sleep: #818cf8;
+
+  /* Effects */
+  --grad-brand: linear-gradient(96deg, #34d399 0%, #2dd4bf 48%, #38bdf8 100%);
+  --grad-brand-soft: linear-gradient(96deg, rgba(52, 211, 153, 0.16), rgba(56, 189, 248, 0.16));
+  --glow-accent: 0 0 34px rgba(16, 185, 129, 0.28);
+  --glow-sky: 0 0 34px rgba(56, 189, 248, 0.22);
+  --shadow-1: 0 10px 30px rgba(1, 4, 12, 0.45);
+  --shadow-2: 0 20px 60px rgba(1, 4, 12, 0.55);
+  --blur-glass: saturate(140%) blur(18px);
+
+  /* Type */
+  --font-display: 'Sora', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.85rem;
+  --fs-md: 0.95rem;
+  --fs-lg: 1.1rem;
+  --fs-xl: 1.45rem;
+  --fs-2xl: 1.9rem;
+  --fs-3xl: 2.6rem;
+
+  /* Shape + rhythm */
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-pill: 999px;
+  --pad-card: clamp(16px, 2.2vw, 24px);
+
+  /* Layers */
+  --z-bg: 0;
+  --z-content: 1;
+  --z-topbar: 40;
+  --z-sidebar: 50;
+  --z-fab: 60;
+  --z-modal: 90;
+  --z-toast: 100;
+
+  /* Layout */
+  --sidebar-w: 264px;
+  --sidebar-w-collapsed: 86px;
+  --topbar-h: 68px;
+  --mobilenav-h: 66px;
+
+  /* Charts */
+  --chart-grid: rgba(148, 163, 184, 0.12);
+
+  /* Convenience aliases for inline style usage */
+  --c-warn: var(--warn);
+  --c-danger: var(--danger);
+  --c-violet: var(--violet);
+  --c-pink: var(--pink);
+  --c-sleep: var(--sleep);
+
+  color-scheme: dark;
+}
+
+/* --------------------------------- Light --------------------------------- */
+[data-theme='light'] {
+  --bg-0: #eaf1f7;
+  --bg-1: #f3f8fb;
+  --bg-2: #ffffff;
+
+  --surface: rgba(255, 255, 255, 0.62);
+  --surface-2: rgba(255, 255, 255, 0.82);
+  --surface-3: rgba(255, 255, 255, 0.95);
+  --surface-solid: #ffffff;
+  --surface-raised: rgba(255, 255, 255, 0.88);
+
+  --border: rgba(13, 34, 56, 0.1);
+  --border-strong: rgba(13, 34, 56, 0.2);
+
+  --text-1: #0c1a2b;
+  --text-2: #4d6076;
+  --text-3: #7c8ba0;
+  --text-invert: #ffffff;
+
+  --accent: #0d9d76;
+  --accent-2: #0ea5a4;
+  --accent-3: #0284c7;
+  --accent-soft: rgba(13, 157, 118, 0.12);
+  --accent-border: rgba(13, 157, 118, 0.35);
+
+  --grad-brand: linear-gradient(96deg, #0fae82 0%, #0ea5a4 48%, #0ea5e9 100%);
+  --grad-brand-soft: linear-gradient(96deg, rgba(15, 174, 130, 0.12), rgba(14, 165, 233, 0.12));
+  --glow-accent: 0 0 30px rgba(13, 157, 118, 0.18);
+  --glow-sky: 0 0 30px rgba(2, 132, 199, 0.14);
+  --shadow-1: 0 10px 30px rgba(23, 48, 73, 0.1);
+  --shadow-2: 0 24px 60px rgba(23, 48, 73, 0.14);
+
+  --chart-grid: rgba(13, 34, 56, 0.1);
+
+  --c-warn: var(--warn);
+  --c-danger: var(--danger);
+  --c-violet: var(--violet);
+  --c-pink: var(--pink);
+  --c-sleep: var(--sleep);
+
+  color-scheme: light;
+}
