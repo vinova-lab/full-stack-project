@@ -2,7 +2,7 @@
 
 > Your Health. Your Data. Your Journey.
 
-A premium, production-ready **frontend-only** React + Vite wellness platform with a complete localStorage backend seam, ready to wire to any REST API.
+A premium React + Vite wellness platform with a localStorage backend seam **and a Spring Boot 4 REST backend** (`backend/nutriflow`) that implements the same contract.
 
 ---
 
@@ -18,6 +18,21 @@ npm run preview    # Preview the production build
 **Demo login** — click "Try Demo Account" on the login screen, or use:
 - Email: `demo@nutriflow.app`
 - Password: `demo1234`
+
+---
+
+## Backend (Spring Boot 4 · Java 21 · Maven · H2)
+
+```bash
+cd backend/nutriflow
+./mvnw spring-boot:run      # API on http://localhost:8080, H2 console at /h2-console
+./mvnw test                 # JUnit 5 + Mockito + @SpringBootTest
+```
+
+Three-layer architecture — `controller/` → `service/` → `repository/` → H2 — with entities
+`User`, `DayLog`, `Meal`, four business rules in the service layer, and the REST endpoints listed in
+`src/services/apiClient.js`. Full details, request-flow diagram and API table:
+[`backend/nutriflow/README.md`](backend/nutriflow/README.md); test cases: [`backend/nutriflow/TESTING.md`](backend/nutriflow/TESTING.md).
 
 ---
 
@@ -51,6 +66,7 @@ nutriflow/
 │   ├── utils/            dates, calculations, format, motivation, history, confetti, sound
 │   ├── App.jsx
 │   └── main.jsx
+├── backend/nutriflow/   Spring Boot REST API (see Backend section)
 ├── index.html
 ├── vite.config.js
 └── package.json
