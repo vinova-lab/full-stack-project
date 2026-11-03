@@ -21,6 +21,43 @@ npm run preview    # Preview the production build
 
 ---
 
+## Microservices Architecture
+
+SkillHub microservices split business capabilities into independently deployable Spring Boot services:
+
+### 1. Course Service (`backend/course-service`)
+- **Port:** `8081`
+- **Database:** Embedded H2 in-memory (`jdbc:h2:mem:coursedb`), console at `/h2-console`
+- **Layers:** Controller (`CourseController`) → Service (`CourseService`) → Repository (`CourseRepository`) → H2
+- **Seed Data:** `CommandLineRunner` in `CourseServiceApplication` populates initial sample courses on startup
+- **CORS:** Enabled for `http://localhost:5173`
+- **Run:**
+  ```bash
+  cd backend/course-service
+  ./mvnw spring-boot:run
+  ```
+- **Endpoints:**
+  - `GET /api/courses` — Retrieve all courses
+  - `POST /api/courses` — Create and save a new course
+
+### 2. User Service (`backend/user-service`)
+- **Port:** `8082`
+- **Database:** Dedicated MySQL server (`jdbc:mysql://localhost:3306/skillhub_users`)
+- **Security:** BCrypt password hashing (`BCryptPasswordEncoder` via `spring-security-crypto`)
+- **Privacy:** `UserResponse` DTO excludes password hashes from all API responses
+- **CORS:** Enabled for `http://localhost:5173`
+- **Run:**
+  ```bash
+  cd backend/user-service
+  ./mvnw spring-boot:run
+  ```
+- **Endpoints:**
+  - `POST /api/users` — Register a new user (password is BCrypt hashed before storage)
+  - `POST /api/users/login` — Authenticate email and password (`matches` check; 200 OK or 401 Unauthorized)
+  - `GET /api/users` — Retrieve all users (passwords excluded)
+
+---
+
 ## Backend (Spring Boot 4 · Java 21 · Maven · H2)
 
 ```bash

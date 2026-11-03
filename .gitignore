@@ -2,3 +2,8 @@ node_modules
 dist
 .DS_Store
 *.local
+
+target/
+.idea/
+*.iml
+.mvn/wrapper/maven-wrapper.jar

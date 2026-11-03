@@ -27,6 +27,7 @@ export default function Landing() {
           <span aria-hidden="true">🌿</span> NutriFlow
         </Link>
         <div className="landing-nav__links" aria-hidden="true">
+          <Link to="/courses" style={{ color: 'inherit', textDecoration: 'none' }}>Courses</Link>
           <a href="#features">Features</a>
           <a href="#testimonials">Reviews</a>
           <a href="#pricing">About</a>

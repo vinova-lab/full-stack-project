@@ -1,0 +1,30 @@
+### Register a new user
+POST http://localhost:8082/api/users
+Content-Type: application/json
+
+{
+  "name": "Priya Sharma",
+  "email": "priya@example.com",
+  "password": "DemoPass456"
+}
+
+### Login with valid credentials
+POST http://localhost:8082/api/users/login
+Content-Type: application/json
+
+{
+  "email": "priya@example.com",
+  "password": "DemoPass456"
+}
+
+### Login with invalid credentials (expects 401 Unauthorized)
+POST http://localhost:8082/api/users/login
+Content-Type: application/json
+
+{
+  "email": "priya@example.com",
+  "password": "WrongPassword"
+}
+
+### Retrieve all users (passwords must NOT be returned)
+GET http://localhost:8082/api/users

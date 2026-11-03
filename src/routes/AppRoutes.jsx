@@ -4,7 +4,7 @@ import { useUser } from '../context/UserContext.jsx';
 
 // Pages
 import Landing from '../pages/Landing.jsx';
-import { Login, Register } from '../pages/Auth.jsx';
+import { Courses, Register } from '../App.jsx';
 import Onboarding from '../pages/Onboarding.jsx';
 import Dashboard from '../pages/Dashboard.jsx';
 import Health from '../pages/Health.jsx';
@@ -34,8 +34,10 @@ export default function AppRoutes() {
     <Routes>
       {/* Public */}
       <Route path="/" element={<Landing />} />
-      <Route path="/login" element={<Login />} />
+      <Route path="/login" element={<Register />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/courses" element={<Courses />} />
+      <Route path="/contact" element={<Contact />} />
       <Route path="/onboarding" element={<RequireAuth><Onboarding /></RequireAuth>} />
 
       {/* Protected app shell */}
