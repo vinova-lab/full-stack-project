@@ -44,7 +44,7 @@ class AuthServiceTest {
     @Test
     @DisplayName("TC-05 duplicate e-mail (case/space-insensitive) is rejected with 409")
     void duplicateEmailIsRejected() {
-        when(repo.existsByEmail("deenu@example.com")).thenReturn(true);
+        when(repo.existsByEmail("testuser@example.com")).thenReturn(true);
 
         assertThatThrownBy(() -> service.register("Deenu", " Deenu@Example.com ", "secret123"))
                 .isInstanceOf(ConflictException.class)
