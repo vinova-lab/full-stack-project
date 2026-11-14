@@ -15,6 +15,10 @@ jobs:
           node-version: '20'
       - name: Install dependencies
         run: npm ci
+      - name: Set up Git config for gh-pages
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
       - name: Build
         run: npm run build
       - name: Deploy to GitHub Pages
