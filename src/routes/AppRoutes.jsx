@@ -37,7 +37,7 @@ export default function AppRoutes() {
       <Route path="/login" element={<Register />} />
       <Route path="/register" element={<Register />} />
       <Route path="/courses" element={<Courses />} />
-      <Route path="/contact" element={<Contact />} />
+      <Route path="/contact" element={<div className="public-page"><Contact /></div>} />
       <Route path="/onboarding" element={<RequireAuth><Onboarding /></RequireAuth>} />
 
       {/* Protected app shell */}

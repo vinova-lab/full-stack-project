@@ -24,7 +24,12 @@ export default function Landing() {
       {/* Nav */}
       <nav className="landing-nav" aria-label="Site navigation">
         <Link to="/" className="row" style={{ gap: '0.5rem', fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.1rem', textDecoration: 'none' }}>
-          <span aria-hidden="true">🌿</span> NutriFlow
+          <span className="brand-mark" aria-hidden="true" style={{ width: 30, height: 30, borderRadius: 9 }}>
+            <svg width="18" height="18" viewBox="0 0 64 64" fill="none">
+              <path d="M32 10c10 6 16 13 16 22 0 10-7 18-16 22-9-4-16-12-16-22 0-9 6-16 16-22z" stroke="#04121a" strokeWidth="4" strokeLinejoin="round" />
+              <path d="M18 34h7l3-8 5 14 3-6h10" stroke="#04121a" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span> NutriFlow
         </Link>
         <div className="landing-nav__links" aria-hidden="true">
           <Link to="/courses" style={{ color: 'inherit', textDecoration: 'none' }}>Courses</Link>

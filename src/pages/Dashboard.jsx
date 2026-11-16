@@ -8,12 +8,13 @@ import MealTimeline from '../components/dashboard/MealTimeline.jsx';
 import { useUser } from '../context/UserContext.jsx';
 import { useAuth } from '../context/AuthContext.jsx';
 import { greeting } from '../utils/dates.js';
+import { ScanLine, Dumbbell, ClipboardList, TrendingUp, Droplets, Flame, Lightbulb } from 'lucide-react';
 
 const SHORTCUTS = [
-  { to: '/app/scanner', label: 'Scan Food', icon: '📷' },
-  { to: '/app/workout', label: 'Workout', icon: '🏋️' },
-  { to: '/app/plans', label: 'Diet Plans', icon: '📋' },
-  { to: '/app/analytics', label: 'Analytics', icon: '📈' },
+  { to: '/app/scanner', label: 'Scan Food', icon: ScanLine },
+  { to: '/app/workout', label: 'Workout', icon: Dumbbell },
+  { to: '/app/plans', label: 'Diet Plans', icon: ClipboardList },
+  { to: '/app/analytics', label: 'Analytics', icon: TrendingUp },
 ];
 
 const containerVariants = {
@@ -45,9 +46,9 @@ export default function Dashboard() {
 
       {/* Quick access shortcuts */}
       <motion.div variants={itemVariants} style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
-        {SHORTCUTS.map(({ to, label, icon }) => (
+        {SHORTCUTS.map(({ to, label, icon: Icon }) => (
           <Link key={to} to={to} className="btn btn--ghost btn--sm">
-            <span aria-hidden="true">{icon}</span> {label}
+            <Icon size={15} strokeWidth={2} aria-hidden="true" /> {label}
           </Link>
         ))}
       </motion.div>
@@ -67,19 +68,19 @@ export default function Dashboard() {
         </motion.div>
 
         <motion.div variants={itemVariants} className="col-4">
-          <Card title="💧 Hydration" subtitle="Daily water">
+          <Card title={<><span className="card__icon card__icon--sky" aria-hidden="true"><Droplets size={15} strokeWidth={2.1} /></span>Hydration</>} subtitle="Daily water">
             <WaterTracker />
           </Card>
         </motion.div>
 
         <motion.div variants={itemVariants} className="col-4">
-          <Card title="🔥 Streak" subtitle="Consecutive days">
+          <Card title={<><span className="card__icon card__icon--warn" aria-hidden="true"><Flame size={15} strokeWidth={2.1} /></span>Streak</>} subtitle="Consecutive days">
             <StreakCard />
           </Card>
         </motion.div>
 
         <motion.div variants={itemVariants} className="col-4">
-          <Card title="💡 Daily Insight">
+          <Card title={<><span className="card__icon card__icon--violet" aria-hidden="true"><Lightbulb size={15} strokeWidth={2.1} /></span>Daily Insight</>}>
             <MotivationCard />
           </Card>
         </motion.div>

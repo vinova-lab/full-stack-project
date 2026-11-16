@@ -44,9 +44,9 @@ class AuthServiceTest {
     @Test
     @DisplayName("TC-05 duplicate e-mail (case/space-insensitive) is rejected with 409")
     void duplicateEmailIsRejected() {
-        when(repo.existsByEmail("deenu@example.com")).thenReturn(true);
+        when(repo.existsByEmail("testuser@example.com")).thenReturn(true);
 
-        assertThatThrownBy(() -> service.register("Deenu", " Deenu@Example.com ", "secret123"))
+        assertThatThrownBy(() -> service.register("TestUser", " TestUser@Example.com ", "secret123"))
                 .isInstanceOf(ConflictException.class)
                 .hasMessageContaining("already exists");
         verify(repo, never()).save(any());
@@ -55,24 +55,24 @@ class AuthServiceTest {
     @Test
     @DisplayName("successful registration normalises the e-mail, hashes the password and issues a token")
     void successfulRegistration() {
-        when(repo.existsByEmail("deenu@example.com")).thenReturn(false);
+        when(repo.existsByEmail("testuser@example.com")).thenReturn(false);
 
-        AuthResponse res = service.register("  Deenu ", " Deenu@Example.com ", "secret123");
+        AuthResponse res = service.register("  TestUser ", " TestUser@Example.com ", "secret123");
 
         assertThat(res.token()).startsWith("tok-");
-        assertThat(res.user().email()).isEqualTo("deenu@example.com");
-        assertThat(res.user().name()).isEqualTo("Deenu");
+        assertThat(res.user().email()).isEqualTo("testuser@example.com");
+        assertThat(res.user().name()).isEqualTo("TestUser");
         verify(repo).save(any(User.class));
     }
 
     @Test
     @DisplayName("login with a wrong password is rejected with 401")
     void wrongPasswordIsRejected() {
-        User stored = new User("Deenu", "deenu@example.com",
+        User stored = new User("TestUser", "testuser@example.com",
                 com.nutriflow.service.calc.PasswordHasher.hash("correct-horse"));
-        when(repo.findByEmail("deenu@example.com")).thenReturn(Optional.of(stored));
+        when(repo.findByEmail("testuser@example.com")).thenReturn(Optional.of(stored));
 
-        assertThatThrownBy(() -> service.login("deenu@example.com", "wrong"))
+        assertThatThrownBy(() -> service.login("testuser@example.com", "wrong"))
                 .isInstanceOf(UnauthorizedException.class)
                 .hasMessageContaining("Incorrect password");
     }

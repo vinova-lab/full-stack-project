@@ -13,7 +13,7 @@ const Button = forwardRef(function Button(
 ) {
   const cls = [
     'btn',
-    variant !== 'primary' ? `btn--${variant}` : '',
+    `btn--${variant}`, // primary previously got no modifier class, so it rendered unstyled
     size === 'sm' ? 'btn--sm' : size === 'lg' ? 'btn--lg' : '',
     block ? 'btn--block' : '',
     className,

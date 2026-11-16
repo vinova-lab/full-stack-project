@@ -3,22 +3,26 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.jsx';
 import { useGoal } from '../../context/GoalContext.jsx';
 import { useNutrition } from '../../context/NutritionContext.jsx';
+import {
+  LayoutDashboard, Salad, ScanLine, HeartPulse, Dumbbell, ClipboardList, Target, UserRound,
+  Droplets, TrendingUp, Trophy, Sparkles, Settings, MessageCircle, LogOut, Bell,
+} from 'lucide-react';
 
 const ROUTE_TITLES = {
-  '/app/dashboard': '🏠 Dashboard',
-  '/app/nutrition': '🥗 Nutrition',
-  '/app/scanner': '📷 Food Scanner',
-  '/app/health': '❤️ Health Metrics',
-  '/app/water': '💧 Water Tracker',
-  '/app/workout': '🏋️ Workout',
-  '/app/plans': '📋 Diet Plans',
-  '/app/plan-builder': '✨ Plan Builder',
-  '/app/goals': '🎯 Goals',
-  '/app/analytics': '📈 Analytics',
-  '/app/achievements': '🏆 Achievements',
-  '/app/profile': '👤 Profile',
-  '/app/settings': '⚙️ Settings',
-  '/app/contact': '💬 Help & Contact',
+  '/app/dashboard': { icon: LayoutDashboard, text: 'Dashboard' },
+  '/app/nutrition': { icon: Salad, text: 'Nutrition' },
+  '/app/scanner': { icon: ScanLine, text: 'Food Scanner' },
+  '/app/health': { icon: HeartPulse, text: 'Health Metrics' },
+  '/app/water': { icon: Droplets, text: 'Water Tracker' },
+  '/app/workout': { icon: Dumbbell, text: 'Workout' },
+  '/app/plans': { icon: ClipboardList, text: 'Diet Plans' },
+  '/app/plan-builder': { icon: Sparkles, text: 'Plan Builder' },
+  '/app/goals': { icon: Target, text: 'Goals' },
+  '/app/analytics': { icon: TrendingUp, text: 'Analytics' },
+  '/app/achievements': { icon: Trophy, text: 'Achievements' },
+  '/app/profile': { icon: UserRound, text: 'Profile' },
+  '/app/settings': { icon: Settings, text: 'Settings' },
+  '/app/contact': { icon: MessageCircle, text: 'Help & Contact' },
 };
 
 export default function Topbar({ onMenuToggle }) {
@@ -31,7 +35,9 @@ export default function Topbar({ onMenuToggle }) {
   const [notifOpen, setNotifOpen] = useState(false);
   const [avatarOpen, setAvatarOpen] = useState(false);
 
-  const title = ROUTE_TITLES[location.pathname] ?? 'NutriFlow';
+  const route = ROUTE_TITLES[location.pathname];
+  const TitleIcon = route?.icon;
+  const title = route?.text ?? 'NutriFlow';
 
   // Close menus when clicking outside
   function handleBlur(setter) {
@@ -62,6 +68,9 @@ export default function Topbar({ onMenuToggle }) {
 
       {/* Page title */}
       <h1 className="topbar__title" style={{ fontSize: '1.05rem', fontFamily: 'var(--font-display)', fontWeight: 700, flex: 1 }}>
+        {TitleIcon && (
+          <span className="topbar__icon" aria-hidden="true"><TitleIcon size={17} strokeWidth={2} /></span>
+        )}
         {title}
       </h1>
 
@@ -76,7 +85,7 @@ export default function Topbar({ onMenuToggle }) {
             aria-expanded={notifOpen}
             aria-haspopup="menu"
           >
-            🔔
+            <Bell size={18} strokeWidth={1.9} aria-hidden="true" />
             {notifications.length > 0 && <span className="dot" aria-hidden="true" />}
           </button>
 
@@ -122,14 +131,14 @@ export default function Topbar({ onMenuToggle }) {
                 <div style={{ fontSize: '0.75rem', color: 'var(--text-3)', marginTop: '2px' }}>{session?.email}</div>
               </div>
               <button role="menuitem" className="menu-pop__item" onClick={() => { navigate('/app/profile'); setAvatarOpen(false); }}>
-                👤 Profile
+                <UserRound size={16} aria-hidden="true" /> Profile
               </button>
               <button role="menuitem" className="menu-pop__item" onClick={() => { navigate('/app/settings'); setAvatarOpen(false); }}>
-                ⚙️ Settings
+                <Settings size={16} aria-hidden="true" /> Settings
               </button>
               <div className="divider" />
               <button role="menuitem" className="menu-pop__item danger" onClick={logout}>
-                🚪 Logout
+                <LogOut size={16} aria-hidden="true" /> Logout
               </button>
             </div>
           )}

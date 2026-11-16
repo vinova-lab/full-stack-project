@@ -1,24 +1,28 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.jsx';
+import {
+  LayoutDashboard, Salad, ScanLine, HeartPulse, Dumbbell, ClipboardList, Target, UserRound,
+  Droplets, TrendingUp, Trophy, Sparkles, Settings, MessageCircle, LogOut,
+} from 'lucide-react';
 
 const MAIN_NAV = [
-  { to: '/app/dashboard', icon: '🏠', label: 'Dashboard' },
-  { to: '/app/nutrition', icon: '🥗', label: 'Nutrition' },
-  { to: '/app/scanner', icon: '📷', label: 'Food Scanner' },
-  { to: '/app/health', icon: '❤️', label: 'Health' },
-  { to: '/app/workout', icon: '🏋️', label: 'Workout' },
-  { to: '/app/plans', icon: '📋', label: 'Diet Plans' },
-  { to: '/app/goals', icon: '🎯', label: 'Goals' },
-  { to: '/app/profile', icon: '👤', label: 'Profile' },
+  { to: '/app/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
+  { to: '/app/nutrition', icon: Salad, label: 'Nutrition' },
+  { to: '/app/scanner', icon: ScanLine, label: 'Food Scanner' },
+  { to: '/app/health', icon: HeartPulse, label: 'Health' },
+  { to: '/app/workout', icon: Dumbbell, label: 'Workout' },
+  { to: '/app/plans', icon: ClipboardList, label: 'Diet Plans' },
+  { to: '/app/goals', icon: Target, label: 'Goals' },
+  { to: '/app/profile', icon: UserRound, label: 'Profile' },
 ];
 
 const SUB_NAV = [
-  { to: '/app/water', icon: '💧', label: 'Water' },
-  { to: '/app/analytics', icon: '📈', label: 'Analytics' },
-  { to: '/app/achievements', icon: '🏆', label: 'Achievements' },
-  { to: '/app/plan-builder', icon: '✨', label: 'Plan Builder' },
-  { to: '/app/settings', icon: '⚙️', label: 'Settings' },
-  { to: '/app/contact', icon: '💬', label: 'Help' },
+  { to: '/app/water', icon: Droplets, label: 'Water' },
+  { to: '/app/analytics', icon: TrendingUp, label: 'Analytics' },
+  { to: '/app/achievements', icon: Trophy, label: 'Achievements' },
+  { to: '/app/plan-builder', icon: Sparkles, label: 'Plan Builder' },
+  { to: '/app/settings', icon: Settings, label: 'Settings' },
+  { to: '/app/contact', icon: MessageCircle, label: 'Help' },
 ];
 
 export default function Sidebar({ collapsed, onToggle }) {
@@ -52,14 +56,14 @@ export default function Sidebar({ collapsed, onToggle }) {
       {/* Main nav */}
       <nav className="sidebar__nav" aria-label="Main">
         {!collapsed && <div className="sidebar__label">Main</div>}
-        {MAIN_NAV.map(({ to, icon, label }) => (
+        {MAIN_NAV.map(({ to, icon: Icon, label }) => (
           <NavLink
             key={to}
             to={to}
             className={({ isActive }) => `nav-item${isActive ? ' active' : ''}`}
             title={collapsed ? label : undefined}
           >
-            <span style={{ fontSize: '1.1rem', flexShrink: 0 }} aria-hidden="true">{icon}</span>
+            <Icon className="nav-item__icon" size={18} strokeWidth={1.9} aria-hidden="true" />
             {!collapsed && <span>{label}</span>}
           </NavLink>
         ))}
@@ -67,14 +71,14 @@ export default function Sidebar({ collapsed, onToggle }) {
         {!collapsed && <div className="sidebar__label" style={{ marginTop: '6px' }}>More</div>}
         <div className="divider" style={{ margin: '6px 0' }} />
 
-        {SUB_NAV.map(({ to, icon, label }) => (
+        {SUB_NAV.map(({ to, icon: Icon, label }) => (
           <NavLink
             key={to}
             to={to}
             className={({ isActive }) => `nav-item${isActive ? ' active' : ''}`}
             title={collapsed ? label : undefined}
           >
-            <span style={{ fontSize: '1.1rem', flexShrink: 0 }} aria-hidden="true">{icon}</span>
+            <Icon className="nav-item__icon" size={18} strokeWidth={1.9} aria-hidden="true" />
             {!collapsed && <span>{label}</span>}
           </NavLink>
         ))}
@@ -101,7 +105,7 @@ export default function Sidebar({ collapsed, onToggle }) {
         title={collapsed ? 'Logout' : undefined}
         style={{ border: 'none', cursor: 'pointer', textAlign: 'left', width: '100%', color: 'var(--danger)', marginTop: '4px' }}
       >
-        <span style={{ fontSize: '1.1rem', flexShrink: 0 }} aria-hidden="true">🚪</span>
+        <LogOut className="nav-item__icon" size={18} strokeWidth={1.9} aria-hidden="true" />
         {!collapsed && <span>Logout</span>}
       </button>
 

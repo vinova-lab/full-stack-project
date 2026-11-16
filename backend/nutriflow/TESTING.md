@@ -16,7 +16,7 @@ HTTP / H2 console steps below.
 | TC-02 | `GoalCalculatorTest.loseGoalLowersTargetAndRaisesProtein` | same profile, goal `lose` | calories 2050, protein 154 g, carbs 215 g, fat 64 g | calories 2050, protein 154 g, carbs 215 g, fat 64 g | **PASS** |
 | TC-03 | `WellnessCalculatorTest.demoDayScore` | 1170/1850 kcal, 1800/2500 ml, 0/30 min, 462/480 min | score 56; breakdown 63 / 72 / 0 / 96 | score 56; breakdown 63 / 72 / 0 / 96 | **PASS** |
 | TC-04 | `AuthServiceTest.reservedEmailIsRejected` | register `"  DEMO@NutriFlow.app "` | `ConflictException` "…reserved…", repository `save` never called | `ConflictException`, `save` never called | **PASS** |
-| TC-05 | `AuthServiceTest.duplicateEmailIsRejected` | register ` Deenu@Example.com ` when `deenu@example.com` exists | `ConflictException` "…already exists" | `ConflictException` "already exists" | **PASS** |
+| TC-05 | `AuthServiceTest.duplicateEmailIsRejected` | register ` TestUser@Example.com ` when `testuser@example.com` exists | `ConflictException` "…already exists" | `ConflictException` "already exists" | **PASS** |
 | TC-06 | `DayLogServiceIntegrationTest.onlyDoneMealsCountTowardIntake` | add 480 kcal meal with `done=false`, then toggle | consumed 0 kcal → 480 kcal; nutrition 20 % | consumed 0 → 480 kcal; nutrition 20 % | **PASS** |
 | TC-07 | `DayLogServiceIntegrationTest.waterRangeGuard` | `setWater(12000)` | `BadRequestException` "waterMl…"; stored water stays 0 | `BadRequestException`; water stays 0 | **PASS** |
 
